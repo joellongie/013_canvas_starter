@@ -99,9 +99,12 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
               </Tooltip>
               
               <Dialog.Portal>
-                <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
-                <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-6 w-[500px] z-50">
-                  <div className="flex items-center justify-between mb-4">
+                <Dialog.Overlay className="fixed inset-0 bg-white/80 z-50" />
+                <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-2xl w-[700px] max-h-[80vh] z-50 flex flex-col">
+                  <Dialog.Description className="sr-only">
+                    Select an item type and indentation level to add to the module
+                  </Dialog.Description>
+                  <div className="flex items-center justify-between p-6 border-b border-gray-200">
                     <Dialog.Title className="text-lg font-semibold">
                       Add Item to {moduleData.title}
                     </Dialog.Title>
@@ -112,9 +115,9 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
                     </Dialog.Close>
                   </div>
                   
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <label className="text-sm font-medium w-16">Add</label>
+                  <div className="flex-1 p-6 pb-40 space-y-4">
+                    <div className="flex items-center gap-4">
+                      <label className="text-sm font-medium w-20">Add</label>
                       <select className="flex-1 px-3 py-2 border border-gray-300 rounded-md">
                         <option value="">Select item type</option>
                         <option value="assignment">Assignment</option>
@@ -127,8 +130,8 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
                       <span className="text-sm text-gray-600">to {moduleData.title}</span>
                     </div>
                     
-                    <div className="flex items-center gap-2">
-                      <label className="text-sm font-medium w-16">Indentation:</label>
+                    <div className="flex items-center gap-4">
+                      <label className="text-sm font-medium w-20">Indentation:</label>
                       <select className="px-3 py-2 border border-gray-300 rounded-md">
                         <option value="0">Don't Indent</option>
                         <option value="1">Indent 1 level</option>
@@ -138,7 +141,7 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
                     </div>
                   </div>
                   
-                  <div className="flex justify-end gap-2 mt-6">
+                  <div className="bg-gray-50 p-4 rounded-b-lg border-t border-gray-200 flex justify-end gap-2">
                     <Dialog.Close asChild>
                       <Button variant="outline">Cancel</Button>
                     </Dialog.Close>
