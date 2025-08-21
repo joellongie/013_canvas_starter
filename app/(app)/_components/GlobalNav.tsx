@@ -62,12 +62,12 @@ export default function GlobalNav() {
                   <button
                     className={cn(
                       "w-full h-[72px] flex flex-col items-center justify-center text-[#E5E7EB] hover:bg-[#3A3A3A] transition-colors relative group",
-                      item.active && "bg-[#3A3A3A] text-white"
+                      item.active && "bg-white text-brand-maroon"
                     )}
                     aria-current={item.active ? "page" : undefined}
                   >
                     {item.active && (
-                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-white" />
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-brand-maroon" />
                     )}
                     <div className="relative">
                       <Icon className="h-6 w-6 mb-1" />

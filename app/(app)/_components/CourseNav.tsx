@@ -72,7 +72,7 @@ export default function CourseNav() {
             <button
               key={index}
               className={cn(
-                "w-full px-3 py-2.5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors relative group text-[14px]",
+                "w-full px-6 py-2.5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors relative group text-[14px]",
                 item.selected && "bg-gray-50 font-semibold"
               )}
               aria-current={item.selected ? "page" : undefined}
@@ -82,9 +82,8 @@ export default function CourseNav() {
               )}
               
               <div className="flex items-center gap-3 flex-1">
-                <Icon className="h-5 w-5 text-gray-600" />
                 <span className={cn(
-                  "text-gray-900",
+                  "text-[#8C1D40]",
                   item.selected && "font-semibold"
                 )}>
                   {item.label}

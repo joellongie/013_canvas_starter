@@ -60,3 +60,4 @@ Seed data is centralized in `lib/seed.ts` containing:
 - Radix UI components for interactive elements (tooltips, dropdowns)
 - Hover states and transitions for all interactive elements
 - Conditional rendering based on data properties (published, hidden, selected states)
+- when I say the color marron it is: #8C1D40
