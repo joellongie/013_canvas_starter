@@ -40,8 +40,17 @@ const iconMap: Record<string, React.ElementType> = {
 export default function GlobalNav() {
   return (
     <TooltipProvider>
+      {/* ASU Logo Header */}
+      <div className="fixed left-0 top-0 w-[88px] h-[50px] bg-[#f3f3f3] flex items-center justify-center border-b border-[#3A3A3A]">
+        <img 
+          src="/images/ASU.svg" 
+          alt="ASU Logo" 
+          className="h-6 w-auto"
+        />
+      </div>
+      
       <nav 
-        className="fixed left-0 top-0 h-full w-[88px] bg-[#2B2B2B] flex flex-col"
+        className="fixed left-0 top-[50px] h-[calc(100vh-50px)] w-[88px] bg-[#2B2B2B] flex flex-col"
         aria-label="Global navigation"
       >
         <div className="flex flex-col items-center py-3 flex-1 overflow-y-auto">

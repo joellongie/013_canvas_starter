@@ -34,7 +34,7 @@ const actionIcons: Record<string, React.ElementType> = {
 export default function RightSidebar() {
   return (
     <aside 
-      className="fixed right-0 top-0 h-full w-[320px] bg-white border-l border-[#E5E7EB] overflow-y-auto"
+      className="fixed right-0 top-[50px] h-[calc(100vh-50px)] w-[320px] bg-white border-l border-[#E5E7EB] overflow-y-auto"
       aria-label="Course Status"
     >
       <div className="p-4">
