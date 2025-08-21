@@ -20,15 +20,17 @@ export default function ModulesPage() {
       items: []
     }
   ]);
+  const [nextId, setNextId] = useState(2);
 
   const addModule = () => {
     const newModule: Module = {
-      id: Date.now().toString(),
+      id: nextId.toString(),
       title: 'New Module',
       published: false,
       items: []
     };
     setModules([...modules, newModule]);
+    setNextId(nextId + 1);
   };
 
   const deleteModule = (moduleId: string) => {

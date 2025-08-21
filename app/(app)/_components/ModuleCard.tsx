@@ -126,6 +126,7 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
                         <option value="page">Page</option>
                         <option value="file">File</option>
                         <option value="url">External URL</option>
+                        <option value="external-tool">External Tool</option>
                       </select>
                       <span className="text-sm text-gray-600">to {moduleData.title}</span>
                     </div>
