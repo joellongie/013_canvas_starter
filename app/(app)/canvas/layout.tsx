@@ -14,9 +14,9 @@ export default function CanvasLayout({
       <CourseNav />
       <RightSidebar />
       
-      <div className="pl-[312px] pr-[320px] h-full flex flex-col">
-        <AppHeader />
-        <main className="flex-1 overflow-y-auto bg-[#FAFAFA]">
+      <AppHeader />
+      <div className="pl-[312px] pr-[320px] pt-[50px] h-full">
+        <main className="h-full overflow-y-auto bg-[#FAFAFA]">
           {children}
         </main>
       </div>

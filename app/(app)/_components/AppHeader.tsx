@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 
 export default function AppHeader() {
   return (
-    <header className="h-[50px] bg-white border-b border-[#E5E7EB] flex items-center justify-between px-4">
+    <header className="fixed top-0 left-[88px] right-0 h-[50px] bg-white border-b border-[#E5E7EB] flex items-center justify-between px-4 z-10">
       <div className="flex items-center gap-3">
         <button className="p-2 hover:bg-gray-100 rounded-md transition-colors">
           <Menu className="h-5 w-5" />
