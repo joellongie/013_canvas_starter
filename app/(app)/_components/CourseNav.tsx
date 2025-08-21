@@ -1,0 +1,103 @@
+"use client"
+
+import React from 'react';
+import { 
+  Home,
+  Megaphone,
+  ClipboardList,
+  MessagesSquare,
+  BarChart3,
+  Users,
+  FileText,
+  Folder,
+  ScrollText,
+  Target,
+  Grid3X3,
+  ListChecks,
+  Boxes,
+  Handshake,
+  MessageSquare,
+  CalendarCheck,
+  Cloud,
+  Lock,
+  ShoppingBag,
+  Gauge,
+  Video,
+  EyeOff
+} from 'lucide-react';
+import { courseNav } from '@/lib/seed';
+import { cn } from '@/lib/utils';
+
+// Safety check for courseNav data
+const courseNavData = courseNav || [];
+
+const iconMap: Record<string, React.ElementType> = {
+  Home,
+  Megaphone,
+  ClipboardList,
+  MessagesSquare,
+  BarChart3,
+  Users,
+  FileText,
+  Folder,
+  ScrollText,
+  Target,
+  Grid3X3,
+  ListChecks,
+  Boxes,
+  Handshake,
+  MessageSquare,
+  CalendarCheck,
+  Cloud,
+  Lock,
+  ShoppingBag,
+  Gauge,
+  Video,
+};
+
+export default function CourseNav() {
+  return (
+    <nav 
+      className="fixed left-[88px] top-0 h-full w-[224px] bg-white border-r border-[#E5E7EB] overflow-y-auto"
+      aria-label="Course navigation"
+    >
+      <div className="py-3">
+        <div className="px-3 pb-2 text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
+          2025 DEV
+        </div>
+        
+        {courseNavData.map((item, index) => {
+          const Icon = iconMap[item.icon];
+          return (
+            <button
+              key={index}
+              className={cn(
+                "w-full px-3 py-2.5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors relative group text-[14px]",
+                item.selected && "bg-gray-50 font-semibold"
+              )}
+              aria-current={item.selected ? "page" : undefined}
+            >
+              {item.selected && (
+                <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-brand-maroon" />
+              )}
+              
+              <div className="flex items-center gap-3 flex-1">
+                <Icon className="h-5 w-5 text-gray-600" />
+                <span className={cn(
+                  "text-gray-900",
+                  item.selected && "font-semibold"
+                )}>
+                  {item.label}
+                </span>
+              </div>
+              
+              {item.hidden && (
+                <EyeOff className="h-4 w-4 text-gray-400" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+    </nav>
+  );
+}
