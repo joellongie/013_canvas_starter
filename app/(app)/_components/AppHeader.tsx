@@ -12,12 +12,8 @@ export default function AppHeader() {
           <Menu className="h-5 w-5" />
         </button>
         
-        <div className="flex items-center gap-2">
-          <span className="text-brand-maroon font-bold text-[18px]">ASU</span>
-        </div>
-        
         <nav className="flex items-center gap-2 text-[14px]">
-          <span className="text-gray-600">DEV-2025-LIT:jlongie</span>
+          <span className="text-[#8C1D40]">DEV-2025-LIT:jlongie</span>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           <span className="text-gray-900 font-medium">Modules</span>
         </nav>

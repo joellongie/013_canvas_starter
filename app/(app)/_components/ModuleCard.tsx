@@ -35,7 +35,7 @@ export default function ModuleCard() {
   return (
     <TooltipProvider>
       <div className="bg-white border border-[#E5E7EB] rounded-lg mb-4">
-        <div className="flex items-center justify-between p-3 border-b border-[#E5E7EB]">
+        <div className="flex items-center justify-between p-3 border-b border-[#E5E7EB] bg-[#f9f9f9]">
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
