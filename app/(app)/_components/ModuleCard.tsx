@@ -118,7 +118,7 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
                   <div className="flex-1 p-6 pb-40 space-y-4">
                     <div className="flex items-center gap-4">
                       <label className="text-sm font-medium w-20">Add</label>
-                      <select className="flex-1 px-3 py-2 border border-gray-300 rounded-md">
+                      <select className="flex-1 px-3 py-2 pr-8 border border-gray-300 rounded-md">
                         <option value="">Select item type</option>
                         <option value="assignment">Assignment</option>
                         <option value="quiz">Quiz</option>
@@ -132,7 +132,7 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
                     
                     <div className="flex items-center gap-4">
                       <label className="text-sm font-medium w-20">Indentation:</label>
-                      <select className="px-3 py-2 border border-gray-300 rounded-md">
+                      <select className="px-3 py-2 pr-8 border border-gray-300 rounded-md">
                         <option value="0">Don't Indent</option>
                         <option value="1">Indent 1 level</option>
                         <option value="2">Indent 2 levels</option>
