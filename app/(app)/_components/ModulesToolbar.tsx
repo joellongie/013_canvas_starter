@@ -12,7 +12,7 @@ import {
 
 export default function ModulesToolbar() {
   return (
-    <div className="flex items-center justify-between p-4 bg-white border-b border-[#E5E7EB]">
+    <div className="flex items-center justify-end p-4 bg-white border-b border-[#E5E7EB]">
       <div className="flex items-center gap-2">
         <Button variant="secondary" size="sm">
           Collapse All
@@ -35,9 +35,7 @@ export default function ModulesToolbar() {
             <DropdownMenuItem>Unpublish all modules and items</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      </div>
-      
-      <div className="flex items-center gap-2">
+        
         <Button size="sm" className="gap-2">
           <Plus className="h-4 w-4" />
           Module
