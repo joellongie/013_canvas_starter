@@ -10,11 +10,7 @@ import {
   MoreVertical,
   Upload
 } from 'lucide-react';
-import { moduleData } from '@/lib/seed';
 import { cn } from '@/lib/utils';
-
-// Safety check for module data
-const safeModuleData = moduleData || { title: 'Loading...', published: false, items: [] };
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,13 +24,25 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-export default function ModuleCard() {
+interface ModuleData {
+  id: string;
+  title: string;
+  published: boolean;
+  items: any[];
+}
+
+interface ModuleCardProps {
+  moduleData: ModuleData;
+  onDelete: (moduleId: string) => void;
+}
+
+export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
   const [isExpanded, setIsExpanded] = useState(true);
-  const [isPublished, setIsPublished] = useState(safeModuleData.published);
+  const [isPublished, setIsPublished] = useState(moduleData.published);
   
   return (
     <TooltipProvider>
-      <div className="bg-white border border-[#E5E7EB] rounded-lg mb-4">
+      <div className="bg-white border border-[#E5E7EB] rounded-lg mb-4 module">
         <div className="flex items-center justify-between p-3 border-b border-[#E5E7EB] bg-[#f9f9f9]">
           <div className="flex items-center gap-2">
             <button
@@ -49,7 +57,7 @@ export default function ModuleCard() {
               )}
             </button>
             
-            <h3 className="text-[15px] font-medium">{safeModuleData.title}</h3>
+            <h3 className="text-[15px] font-medium">{moduleData.title}</h3>
           </div>
           
           <div className="flex items-center gap-1">
@@ -91,7 +99,7 @@ export default function ModuleCard() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem>Edit module</DropdownMenuItem>
-                <DropdownMenuItem>Delete module</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => onDelete(moduleData.id)}>Delete module</DropdownMenuItem>
                 <DropdownMenuItem>Move module</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

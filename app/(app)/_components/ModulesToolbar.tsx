@@ -10,7 +10,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function ModulesToolbar() {
+interface ModulesToolbarProps {
+  onAddModule: () => void;
+}
+
+export default function ModulesToolbar({ onAddModule }: ModulesToolbarProps) {
   return (
     <div className="flex items-center justify-end p-4 bg-white border-b border-[#E5E7EB]">
       <div className="flex items-center gap-2">
@@ -36,7 +40,7 @@ export default function ModulesToolbar() {
           </DropdownMenuContent>
         </DropdownMenu>
         
-        <Button size="sm" className="gap-2">
+        <Button size="sm" className="gap-2" onClick={onAddModule}>
           <Plus className="h-4 w-4" />
           Module
         </Button>
