@@ -23,6 +23,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import * as Dialog from "@radix-ui/react-dialog";
+import { X } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
 interface ModuleData {
   id: string;
@@ -39,6 +42,7 @@ interface ModuleCardProps {
 export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isPublished, setIsPublished] = useState(moduleData.published);
+  const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   
   return (
     <TooltipProvider>
@@ -80,16 +84,69 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
               </TooltipContent>
             </Tooltip>
             
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button className="p-1.5 hover:bg-gray-100 rounded transition-colors">
-                  <Plus className="h-5 w-5 text-gray-600" />
-                </button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Add content</p>
-              </TooltipContent>
-            </Tooltip>
+            <Dialog.Root open={isAddItemModalOpen} onOpenChange={setIsAddItemModalOpen}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Dialog.Trigger asChild>
+                    <button className="p-1.5 hover:bg-gray-100 rounded transition-colors">
+                      <Plus className="h-5 w-5 text-gray-600" />
+                    </button>
+                  </Dialog.Trigger>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Add content</p>
+                </TooltipContent>
+              </Tooltip>
+              
+              <Dialog.Portal>
+                <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
+                <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-6 w-[500px] z-50">
+                  <div className="flex items-center justify-between mb-4">
+                    <Dialog.Title className="text-lg font-semibold">
+                      Add Item to {moduleData.title}
+                    </Dialog.Title>
+                    <Dialog.Close asChild>
+                      <button className="p-1 hover:bg-gray-100 rounded">
+                        <X className="h-4 w-4" />
+                      </button>
+                    </Dialog.Close>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <label className="text-sm font-medium w-16">Add</label>
+                      <select className="flex-1 px-3 py-2 border border-gray-300 rounded-md">
+                        <option value="">Select item type</option>
+                        <option value="assignment">Assignment</option>
+                        <option value="quiz">Quiz</option>
+                        <option value="discussion">Discussion</option>
+                        <option value="page">Page</option>
+                        <option value="file">File</option>
+                        <option value="url">External URL</option>
+                      </select>
+                      <span className="text-sm text-gray-600">to {moduleData.title}</span>
+                    </div>
+                    
+                    <div className="flex items-center gap-2">
+                      <label className="text-sm font-medium w-16">Indentation:</label>
+                      <select className="px-3 py-2 border border-gray-300 rounded-md">
+                        <option value="0">Don't Indent</option>
+                        <option value="1">Indent 1 level</option>
+                        <option value="2">Indent 2 levels</option>
+                        <option value="3">Indent 3 levels</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-end gap-2 mt-6">
+                    <Dialog.Close asChild>
+                      <Button variant="outline">Cancel</Button>
+                    </Dialog.Close>
+                    <Button className="bg-brand-maroon hover:bg-brand-maroon/90">Add Item</Button>
+                  </div>
+                </Dialog.Content>
+              </Dialog.Portal>
+            </Dialog.Root>
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
