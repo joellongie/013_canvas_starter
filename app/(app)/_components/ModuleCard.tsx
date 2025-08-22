@@ -43,6 +43,7 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isPublished, setIsPublished] = useState(moduleData.published);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
+  const [selectedItemType, setSelectedItemType] = useState("");
   
   return (
     <TooltipProvider>
@@ -118,7 +119,11 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
                   <div className="flex-1 p-6 pb-40 space-y-4">
                     <div className="flex items-center gap-4">
                       <label className="text-sm font-medium w-20">Add</label>
-                      <select className="flex-1 px-3 py-2 pr-8 border border-gray-300 rounded-md">
+                      <select 
+                        className="flex-1 px-3 py-2 pr-8 border border-gray-300 rounded-md"
+                        value={selectedItemType}
+                        onChange={(e) => setSelectedItemType(e.target.value)}
+                      >
                         <option value="">Select item type</option>
                         <option value="assignment">Assignment</option>
                         <option value="quiz">Quiz</option>
@@ -130,6 +135,71 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
                       </select>
                       <span className="text-sm text-gray-600">to {moduleData.title}</span>
                     </div>
+                    
+                    {selectedItemType === "external-tool" ? (
+                      <>
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-link">
+                              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                            <span>Select a tool from the list below, or enter a URL for an external tool you already know is configured with Basic LTI to add a link to it to this module.</span>
+                          </div>
+                          
+                          <div className="space-y-2">
+                            <div className="bg-[#f9f9f9] border border-gray-200 rounded-md p-3 hover:bg-gray-100 cursor-pointer">
+                              <div className="flex items-center justify-between">
+                                <div>
+                                  <h4 className="text-sm font-medium text-[#8C1D40]">Pearson Links</h4>
+                                  <p className="text-xs text-gray-600">Access Pearson</p>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-search text-gray-400">
+                                  <circle cx="11" cy="11" r="8"/>
+                                  <path d="m21 21-4.35-4.35"/>
+                                </svg>
+                              </div>
+                            </div>
+                            
+                            <div className="bg-[#f9f9f9] border border-gray-200 rounded-md p-3 hover:bg-gray-100 cursor-pointer">
+                              <div>
+                                <h4 className="text-sm font-medium text-[#8C1D40]">CreateAI Builder</h4>
+                                <p className="text-xs text-gray-600">Create or embed an AI project from ASU's CreateAI Builder.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-4 mt-8">
+                            <label className="text-sm font-medium w-16">URL:</label>
+                            <input 
+                              type="url" 
+                              className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
+                              placeholder=""
+                            />
+                          </div>
+                          
+                          <div className="flex items-center gap-4">
+                            <label className="text-sm font-medium w-16">Page Name:</label>
+                            <input 
+                              type="text" 
+                              className="px-3 py-2 border border-gray-300 rounded-md w-40"
+                              placeholder=""
+                            />
+                          </div>
+                          
+                          <div className="flex items-center gap-3">
+                            <input 
+                              type="checkbox" 
+                              id="load-new-tab"
+                              className="h-4 w-4 text-[#8C1D40] border-gray-300 rounded focus:ring-[#8C1D40]"
+                            />
+                            <label htmlFor="load-new-tab" className="text-sm">Load in a new tab</label>
+                          </div>
+                        </div>
+                      </>
+                    ) : null}
                     
                     <div className="flex items-center gap-4">
                       <label className="text-sm font-medium w-20">Indentation:</label>

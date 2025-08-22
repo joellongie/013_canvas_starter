@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lato.variable} font-sans antialiased`}>
+      <body className={`${lato.variable} font-sans antialiased`} suppressHydrationWarning={true}>
         {children}
       </body>
     </html>
