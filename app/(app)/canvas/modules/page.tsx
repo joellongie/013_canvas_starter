@@ -21,6 +21,7 @@ export default function ModulesPage() {
     }
   ]);
   const [nextId, setNextId] = useState(2);
+  const [allCollapsed, setAllCollapsed] = useState(false);
 
   const addModule = () => {
     const newModule: Module = {
@@ -37,12 +38,25 @@ export default function ModulesPage() {
     setModules(modules.filter(module => module.id !== moduleId));
   };
 
+  const toggleCollapseAll = () => {
+    setAllCollapsed(!allCollapsed);
+  };
+
   return (
     <div>
-      <ModulesToolbar onAddModule={addModule} />
+      <ModulesToolbar 
+        onAddModule={addModule} 
+        allCollapsed={allCollapsed}
+        onToggleCollapseAll={toggleCollapseAll}
+      />
       <div className="p-6">
         {modules.map((module) => (
-          <ModuleCard key={module.id} moduleData={module} onDelete={deleteModule} />
+          <ModuleCard 
+            key={module.id} 
+            moduleData={module} 
+            onDelete={deleteModule}
+            forceCollapsed={allCollapsed}
+          />
         ))}
       </div>
     </div>

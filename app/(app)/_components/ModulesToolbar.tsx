@@ -12,14 +12,16 @@ import {
 
 interface ModulesToolbarProps {
   onAddModule: () => void;
+  allCollapsed: boolean;
+  onToggleCollapseAll: () => void;
 }
 
-export default function ModulesToolbar({ onAddModule }: ModulesToolbarProps) {
+export default function ModulesToolbar({ onAddModule, allCollapsed, onToggleCollapseAll }: ModulesToolbarProps) {
   return (
     <div className="flex items-center justify-end p-4 bg-white border-b border-[#E5E7EB]">
       <div className="flex items-center gap-2">
-        <Button variant="secondary" size="sm">
-          Collapse All
+        <Button variant="secondary" size="sm" onClick={onToggleCollapseAll}>
+          {allCollapsed ? 'Expand All' : 'Collapse All'}
         </Button>
         
         <Button variant="secondary" size="sm">

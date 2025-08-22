@@ -37,13 +37,17 @@ interface ModuleData {
 interface ModuleCardProps {
   moduleData: ModuleData;
   onDelete: (moduleId: string) => void;
+  forceCollapsed?: boolean;
 }
 
-export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
+export default function ModuleCard({ moduleData, onDelete, forceCollapsed = false }: ModuleCardProps) {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isPublished, setIsPublished] = useState(moduleData.published);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [selectedItemType, setSelectedItemType] = useState("");
+  
+  // Determine the actual expanded state - if forceCollapsed is true, override local state
+  const actuallyExpanded = forceCollapsed ? false : isExpanded;
   
   return (
     <TooltipProvider>
@@ -53,9 +57,9 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
             <button
               onClick={() => setIsExpanded(!isExpanded)}
               className="p-1 hover:bg-gray-100 rounded transition-colors"
-              aria-expanded={isExpanded}
+              aria-expanded={actuallyExpanded}
             >
-              {isExpanded ? (
+              {actuallyExpanded ? (
                 <ChevronDown className="h-4 w-4" />
               ) : (
                 <ChevronRight className="h-4 w-4" />
@@ -237,7 +241,7 @@ export default function ModuleCard({ moduleData, onDelete }: ModuleCardProps) {
           </div>
         </div>
         
-        {isExpanded && (
+        {actuallyExpanded && (
           <div className="p-6">
             <div className="border-2 border-dashed border-[#E5E7EB] rounded-lg p-8 text-center">
               <Upload className="h-12 w-12 text-gray-400 mx-auto mb-3" />
