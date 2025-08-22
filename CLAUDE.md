@@ -61,3 +61,8 @@ Seed data is centralized in `lib/seed.ts` containing:
 - Hover states and transitions for all interactive elements
 - Conditional rendering based on data properties (published, hidden, selected states)
 - when I say the color marron it is: #8C1D40
+
+## Git Configuration
+
+- Do not include Claude Code attribution in commit messages
+- remove all Claude Code attribution

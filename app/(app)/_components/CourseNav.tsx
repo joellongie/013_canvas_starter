@@ -58,7 +58,7 @@ const iconMap: Record<string, React.ElementType> = {
 export default function CourseNav() {
   return (
     <nav 
-      className="fixed left-[88px] top-[50px] h-[calc(100vh-50px)] w-[224px] bg-white border-r border-[#E5E7EB] overflow-y-auto"
+      className="nav-menu-items fixed left-[88px] top-[50px] h-[calc(100vh-50px)] w-[224px] bg-white border-r border-[#E5E7EB] overflow-y-auto"
       aria-label="Course navigation"
     >
       <div className="py-3">
