@@ -2,6 +2,8 @@ import GlobalNav from '../_components/GlobalNav';
 import CourseNav from '../_components/CourseNav';
 import RightSidebar from '../_components/RightSidebar';
 import AppHeader from '../_components/AppHeader';
+import { NavigationProvider } from '../_components/NavigationContext';
+import LayoutContent from '../_components/LayoutContent';
 
 export default function CanvasLayout({
   children,
@@ -9,17 +11,17 @@ export default function CanvasLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="h-screen">
-      <GlobalNav />
-      <CourseNav />
-      <RightSidebar />
-      
-      <AppHeader />
-      <div className="pl-[312px] pr-[320px] pt-[50px] h-full">
-        <main className="h-full overflow-y-auto bg-[#FAFAFA]">
+    <NavigationProvider>
+      <div className="h-screen">
+        <GlobalNav />
+        <CourseNav />
+        <RightSidebar />
+        
+        <AppHeader />
+        <LayoutContent>
           {children}
-        </main>
+        </LayoutContent>
       </div>
-    </div>
+    </NavigationProvider>
   );
 }

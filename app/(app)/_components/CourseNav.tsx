@@ -1,64 +1,24 @@
 "use client"
 
 import React from 'react';
-import { 
-  Home,
-  Megaphone,
-  ClipboardList,
-  MessagesSquare,
-  BarChart3,
-  Users,
-  FileText,
-  Folder,
-  ScrollText,
-  Target,
-  Grid3X3,
-  ListChecks,
-  Boxes,
-  Handshake,
-  MessageSquare,
-  CalendarCheck,
-  Cloud,
-  Lock,
-  ShoppingBag,
-  Gauge,
-  Video,
-  EyeOff
-} from 'lucide-react';
+import { EyeOff } from 'lucide-react';
 import { courseNav } from '@/lib/seed';
 import { cn } from '@/lib/utils';
+import { useNavigation } from './NavigationContext';
 
 // Safety check for courseNav data
 const courseNavData = courseNav || [];
 
-const iconMap: Record<string, React.ElementType> = {
-  Home,
-  Megaphone,
-  ClipboardList,
-  MessagesSquare,
-  BarChart3,
-  Users,
-  FileText,
-  Folder,
-  ScrollText,
-  Target,
-  Grid3X3,
-  ListChecks,
-  Boxes,
-  Handshake,
-  MessageSquare,
-  CalendarCheck,
-  Cloud,
-  Lock,
-  ShoppingBag,
-  Gauge,
-  Video,
-};
-
 export default function CourseNav() {
+  const { isNavVisible } = useNavigation();
+  
+  if (!isNavVisible) {
+    return null;
+  }
+
   return (
     <nav 
-      className="nav-menu-items fixed left-[88px] top-[50px] h-[calc(100vh-50px)] w-[224px] bg-white border-r border-[#E5E7EB] overflow-y-auto"
+      className="nav-menu-items fixed left-[88px] top-[50px] h-[calc(100vh-50px)] w-[224px] bg-white border-r border-[#E5E7EB] overflow-y-auto transition-all duration-300"
       aria-label="Course navigation"
     >
       <div className="py-3">
@@ -67,7 +27,6 @@ export default function CourseNav() {
         </div>
         
         {courseNavData.map((item, index) => {
-          const Icon = iconMap[item.icon];
           return (
             <button
               key={index}
