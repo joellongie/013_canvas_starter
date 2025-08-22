@@ -6,6 +6,8 @@ A high-fidelity Canvas LMS interface prototype built with Next.js, focusing on t
 
 - **Authentic Canvas UI** - Pixel-perfect recreation of Canvas LMS interface
 - **Three-Panel Layout** - Global navigation, course navigation, and sidebar
+- **Interactive Navigation** - Toggleable course navigation with hamburger menu
+- **Module Management** - Collapse/expand all functionality with individual module controls
 - **Interactive Components** - Module cards, toolbars, and navigation elements
 - **Responsive Design** - Fixed layout optimized for desktop Canvas experience
 - **ASU Branding** - Official ASU maroon and gold color scheme
@@ -33,6 +35,13 @@ npm run dev
 3. Open [http://localhost:3000](http://localhost:3000) to view the prototype
 
 The main Canvas interface is available at `/canvas/modules`
+
+## Interactive Features
+
+- **Navigation Toggle**: Click the hamburger menu (☰) in the header to show/hide the course navigation panel
+- **Module Cards**: Each module can be individually expanded or collapsed using the chevron button
+- **Collapse/Expand All**: Use the toolbar button to quickly collapse or expand all modules at once
+- **Responsive Layout**: The main content area automatically adjusts when navigation is toggled
 
 ## Development
 

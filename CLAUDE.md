@@ -62,6 +62,13 @@ Seed data is centralized in `lib/seed.ts` containing:
 - Conditional rendering based on data properties (published, hidden, selected states)
 - when I say the color marron it is: #8C1D40
 
+### Interactive Features
+
+- **Navigation Toggle** - Hamburger button in header toggles course navigation visibility
+- **Module Management** - Collapse/expand all functionality for module cards
+- **Module Cards** - Individual expand/collapse with forced state override
+- **Responsive Layout** - Content area adjusts automatically when navigation is hidden
+
 ## Git Configuration
 
 - Do not include Claude Code attribution in commit messages
